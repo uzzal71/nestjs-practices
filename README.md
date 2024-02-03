@@ -1,2 +1,1 @@
-# next-practices
-NestJs Practices
+# NestJs Practices
