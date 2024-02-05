@@ -24,12 +24,16 @@ describe('App e2e', () => {
 
     prisma = app.get(PrismaService);
     pactum.request.setBaseUrl('http://localhost:3333');
-
-    prisma = app.get(PrismaService);
     await prisma.cleanDb();
   });
 
   afterAll(() => {
     app.close();
   });
+
+  describe('Auth', () => {});
+
+  describe('User', () => {});
+
+  describe('Bookmarks', () => {});
 });
