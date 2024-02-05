@@ -37,14 +37,18 @@ describe('App e2e', () => {
     });
 
     describe('Signin', () => {
-      it.todo('should sign up');
+      it.todo('should sign in');
     });
   });
 
   describe('User', () => {
-    describe('Get me', () => {});
+    describe('Get me', () => {
+      it.todo('should get me');
+    });
 
-    describe('Edit user', () => {});
+    describe('Edit user', () => {
+      it.todo('should edit user');
+    });
   });
 
   describe('Bookmarks', () => {
