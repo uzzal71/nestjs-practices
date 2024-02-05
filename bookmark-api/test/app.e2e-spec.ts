@@ -52,14 +52,24 @@ describe('App e2e', () => {
   });
 
   describe('Bookmarks', () => {
-    describe('Create bookmark', () => {});
+    describe('Create bookmark', () => {
+      it.todo('should create bookmark');
+    });
 
-    describe('Get bookmarks', () => {});
+    describe('Get bookmarks', () => {
+      it.todo('should get bookmarks');
+    });
 
-    describe('Get bookmark by id', () => {});
+    describe('Get bookmark by id', () => {
+      it.todo('should bookmark by id');
+    });
 
-    describe('Edot bookmark', () => {});
+    describe('Edit bookmark', () => {
+      it.todo('should edit bookmark');
+    });
 
-    describe('Delete bookmark', () => {});
+    describe('Delete bookmark', () => {
+      it.todo('should delete bookmark');
+    });
   });
 });
