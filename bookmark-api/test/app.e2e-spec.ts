@@ -2,7 +2,7 @@ import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as pactum from 'pactum';
 import { AppModule } from '../src/app.module';
-import { AuthDto } from '../src/auth/dto';
+import { SigninDto, SingupDto } from '../src/auth/dto';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 describe('App e2e', () => {
@@ -12,8 +12,7 @@ describe('App e2e', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule],
-    })import { AuthDto } from '../../nestjs-api-tutorial/src/auth/dto/auth.dto';
-.compile();
+    }).compile();
 
     app = moduleRef.createNestApplication();
     app.useGlobalPipes(
@@ -36,18 +35,32 @@ describe('App e2e', () => {
   describe('Auth', () => {
     describe('Signup', () => {
       it('should signup', () => {
-        const dto: AuthDto = {
-          email: "email@example.com",
-          hash: "password",
-          first_name: "uzzal",
-          last_name: "roy"
-        }
-        return pactum.spec().post('http://localhost:3333/auth/signup').withBody(dto).expectStatus(201);
+        const dto: SingupDto = {
+          email: 'uzzalroy.acm@gmail.com',
+          password: '123',
+          first_name: 'uzzal',
+          last_name: 'roy',
+        };
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody(dto)
+          .expectStatus(201);
       });
     });
 
     describe('Signin', () => {
-      it.todo('should sign in');
+      it('should sign in', () => {
+        const dto: SigninDto = {
+          email: 'uzzalroy.acm@gmail.com',
+          password: '123',
+        };
+        return pactum
+          .spec()
+          .post('/auth/signin')
+          .withBody(dto)
+          .expectStatus(200);
+      });
     });
   });
 
