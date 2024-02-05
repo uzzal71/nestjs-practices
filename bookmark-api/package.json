@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prisma:dev:deploy": "prisma migrate deploy",
-    "prisma:test:deploy": "dotenv -e .env.text -- prisma migrate deploy",
+    "prisma:test:deploy": "dotenv -e .env.test -- prisma migrate deploy",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -19,6 +19,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "pretest:e2e": "dotenv -e .env.test -- prisma migrate deploy",
     "test:e2e": "dotenv -e .env.text -- jest --watch --no-cache --config ./test/jest-e2e.json"
   },
   "dependencies": {
