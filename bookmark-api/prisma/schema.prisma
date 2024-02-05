@@ -35,5 +35,5 @@ model BookMark {
   userId Int
   user User @relation(fields: [userId], references: [id])
 
-  @@map("book_marks")
+  @@map("bookmarks")
 }
