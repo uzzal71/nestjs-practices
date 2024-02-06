@@ -33,28 +33,58 @@ describe('App e2e', () => {
   });
 
   describe('Auth', () => {
+    const dto: SingupDto = {
+      email: 'uzzalroy.acm@gmail.com',
+      password: '123',
+      first_name: 'uzzal',
+      last_name: 'roy',
+    };
+
     describe('Signup', () => {
-      it('should signup', () => {
-        const dto: SingupDto = {
-          email: 'uzzalroy.acm@gmail.com',
-          password: '123',
-          first_name: 'uzzal',
-          last_name: 'roy',
-        };
+      it('should throw if email empty', () => {
         return pactum
           .spec()
           .post('/auth/signup')
-          .withBody(dto)
+          .withBody({
+            password: dto.password,
+            first_name: dto.first_name,
+            last_name: dto.last_name,
+          })
+          .expectStatus(400);
+      });
+
+      it('should throw if password empty', () => {
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody({
+            email: dto.email,
+            first_name: dto.first_name,
+            last_name: dto.last_name,
+          })
+          .expectStatus(400);
+      });
+
+      it('should siginup', () => {
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody({
+            password: dto.password,
+            first_name: dto.first_name,
+            last_name: dto.last_name,
+          })
           .expectStatus(201);
       });
     });
 
     describe('Signin', () => {
+      const dto: SigninDto = {
+        email: 'uzzalroy.acm@gmail.com',
+        password: '123',
+      };
+
       it('should sign in', () => {
-        const dto: SigninDto = {
-          email: 'uzzalroy.acm@gmail.com',
-          password: '123',
-        };
         return pactum
           .spec()
           .post('/auth/signin')
