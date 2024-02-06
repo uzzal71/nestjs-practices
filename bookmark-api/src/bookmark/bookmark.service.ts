@@ -4,4 +4,13 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class BookmarkService {
   constructor(private prisma: PrismaService) {}
+  createBookmark() {}
+
+  getBookmarks() {}
+
+  getBookmarkById() {}
+
+  editBookmarkByid() {}
+
+  deleteBookmarkByid() {}
 }
