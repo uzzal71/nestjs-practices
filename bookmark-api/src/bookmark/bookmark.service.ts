@@ -12,7 +12,7 @@ export class BookmarkService {
 
   createBookmark(userId: number, dto: CreateBookmarkDto) {}
 
-  editBookmarkByid(userId: number, dto: EditBookmarkDto) {}
+  editBookmarkByid(userId: number, bookmarkId: number, dto: EditBookmarkDto) {}
 
   deleteBookmarkByid(userId: number, bookmarkId: number) {}
 }

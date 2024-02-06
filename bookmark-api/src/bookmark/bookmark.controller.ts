@@ -40,12 +40,13 @@ export class BookmarkController {
     return this.bookmarkService.createBookmark(userId, dto);
   }
 
-  @Patch()
+  @Patch(':id')
   editBookmarkByid(
     @GetUser('id') userId: number,
+    @Param('id', ParseIntPipe) bookmarkId: number,
     @Body() dto: EditBookmarkDto,
   ) {
-    return this.bookmarkService.editBookmarkByid(userId, dto);
+    return this.bookmarkService.editBookmarkByid(userId, bookmarkId, dto);
   }
 
   @Delete(':id')
