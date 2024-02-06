@@ -47,33 +47,26 @@ describe('App e2e', () => {
           .post('/auth/signup')
           .withBody({
             password: dto.password,
-            first_name: dto.first_name,
-            last_name: dto.last_name,
           })
           .expectStatus(400);
       });
-
       it('should throw if password empty', () => {
         return pactum
           .spec()
           .post('/auth/signup')
           .withBody({
             email: dto.email,
-            first_name: dto.first_name,
-            last_name: dto.last_name,
           })
           .expectStatus(400);
       });
-
-      it('should siginup', () => {
+      it('should throw if no body provided', () => {
+        return pactum.spec().post('/auth/signup').expectStatus(400);
+      });
+      it('should signup', () => {
         return pactum
           .spec()
           .post('/auth/signup')
-          .withBody({
-            password: dto.password,
-            first_name: dto.first_name,
-            last_name: dto.last_name,
-          })
+          .withBody(dto)
           .expectStatus(201);
       });
     });
@@ -84,7 +77,28 @@ describe('App e2e', () => {
         password: '123',
       };
 
-      it('should sign in', () => {
+      it('should throw if email empty', () => {
+        return pactum
+          .spec()
+          .post('/auth/signin')
+          .withBody({
+            password: dto.password,
+          })
+          .expectStatus(400);
+      });
+      it('should throw if password empty', () => {
+        return pactum
+          .spec()
+          .post('/auth/signin')
+          .withBody({
+            email: dto.email,
+          })
+          .expectStatus(400);
+      });
+      it('should throw if no body provided', () => {
+        return pactum.spec().post('/auth/signin').expectStatus(400);
+      });
+      it('should signin', () => {
         return pactum
           .spec()
           .post('/auth/signin')
