@@ -2,6 +2,8 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
+  ParseIntPipe,
   Patch,
   Post,
   UseGuards,
@@ -18,8 +20,11 @@ export class BookmarkController {
   @Get()
   getBookmarks(@GetUser('id') userId: number) {}
 
-  @Get()
-  getBookmarkById(@GetUser('id') userId: number) {}
+  @Get(':id')
+  getBookmarkById(
+    @GetUser('id') userId: number,
+    @Param('id', ParseIntPipe) bookmarkId: number,
+  ) {}
 
   @Post()
   createBookmark(@GetUser('id') userId: number) {}
